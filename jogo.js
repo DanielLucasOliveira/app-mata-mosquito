@@ -1,8 +1,8 @@
 var altura = 0;
 var largura = 0;
 var vidas = 1;
-var tempo = 30;
-
+var tempo = 6;
+var pontuacao = 0;
 var tempoMosca = 1500;
 
 var nivel = window.location.search;
@@ -24,20 +24,21 @@ function ajustaTamanho() {
 
 ajustaTamanho();
 
-var cronometro = setInterval(function () {
 
+
+var cronometro = setInterval(function () {
 
     tempo -= 1
 
-    if (tempo < 0) {
+    if (tempo < 1) {
         clearInterval(cronometro);
         clearInterval(criaMosca);
-        window.location.href = '/pages/vitoria.html'
-    } else {
-        document.getElementById('cronometro').innerHTML = tempo
+        window.location.href = '/pages/vitoria.html?' + localStorage.getItem('pontuacao_final');
+    } else if (cronometro > 0) {
+        document.getElementById('cronometro').innerHTML = tempo;
     }
 
-}, 1000)
+}, tempoMosca)
 
 function posicaoMosquito() {
     // remover mosquito anterior caso exista
@@ -69,10 +70,11 @@ function posicaoMosquito() {
     mosquito.id = 'mosquito';
     mosquito.onclick = function () {
         this.remove();
+        pontuacao++
+        document.getElementById('pontuacao').innerHTML = pontuacao
+        localStorage.setItem('pontuacao_final', pontuacao);
     }
-
     document.body.appendChild(mosquito);
-
 
 }
 
@@ -109,7 +111,7 @@ function iniciarPartida() {
     }
 
     window.location.href = '/pages/app.html?' + nivel
-    
+
 }
 
 function reiniciar() {

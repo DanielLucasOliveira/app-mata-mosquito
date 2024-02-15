@@ -13,12 +13,26 @@ body{
 .painel {
     position: absolute;
     left: 15px;
-    bottom: 15px;
+    top: 15px;
     width: 190px;
     padding: 10px;
-    border-top: solid 1px #fff;
-    background-color: #fff;
-    opacity: 0.7;
+    background-color: transparent;
+}
+
+.pontuacao {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 150px;
+    padding: 10px;
+    background-color: transparent;
+}
+.pontuacao_final {
+    position: absolute;
+    width: 150px;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
 }
 
 .vida {

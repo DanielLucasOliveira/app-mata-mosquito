@@ -22,10 +22,15 @@
         </div>
     </div>
 
+    <div class="pontuacao">
+        <h1> Pontuação: <span id="pontuacao"></span></h1>
+    </div>
+
 
     <script>
 
         document.getElementById('cronometro').innerHTML = tempo
+        document.getElementById('pontuacao').innerHTML = 0
 
         var criaMosca = setInterval(function name(params) {
             posicaoMosquito();
