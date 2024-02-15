@@ -40,16 +40,25 @@
     </div>
 
     <script>
+        var nivel;
+        var tempoJogo;
+        function getParams() {
+            var queryString = window.location.search;
+            var params = new URLSearchParams(queryString);
+            pontuacao_final = params.get('pontuacao_final');
+            inicio = params.get('nivel');
+            tempoJogo = params.get('tempoJogo');
+            document.getElementById('final').innerHTML = pontuacao_final
+            nivel = inicio;
+        }
+        getParams();
         function reiniciar() {
-            window.location.href = '/pages/app.html'
+            window.location.href = '/pages/app.html?nivel=' + nivel + '&tempoJogo=' + tempoJogo
         }
 
         function inicioJogo() {
             window.location.href = '/pages/index.html'
         }
-        pontuacao_final = window.location.search;
-        pontuacao_final = pontuacao_final.replace('?', '');
-        document.getElementById('final').innerHTML = pontuacao_final;
     </script>
 </body>
 

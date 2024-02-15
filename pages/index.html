@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -25,11 +25,18 @@
             <div class="col">
                 <div class="d-flex justify-content-center">
                     <div class="mb-2">
-                        <select name="nivel" id="nivel" class="form-control">
-                            <option value="">-- Selecionar nível --</option>
+                        <select name="nivel" id="nivel" class="form-control mb-2">
+                            <option value="" class="text-center">Nível</option>
                             <option value="facil">Fácil</option>
                             <option value="normal">Normal</option>
                             <option value="dificil">Difícil</option>
+                        </select>
+
+                        <select name="tempoJogo" id="tempoJogo" class="form-control">
+                            <option value="" class="text-center">Tempo</option>
+                            <option value=30>30 s</option>
+                            <option value=60>1 min</option>
+                            <option value=90>1 min 30 s</option>
                         </select>
                     </div>
                 </div>
@@ -45,8 +52,21 @@
         </div>
     </div>
 
-    
-    <script src="/jogo.js"> </script>
+
+    <script>
+        function iniciarPartida() {
+            var nivel = document.getElementById('nivel').value
+            var tempoJogo = document.getElementById('tempoJogo').value
+
+            if (nivel === '') {
+                alert('Selecione um nivel para iniciar o jogo')
+                return false;
+            }
+
+            window.location.href = '/pages/app.html?nivel=' + nivel + '&tempoJogo=' + tempoJogo
+
+        }
+    </script>
 </body>
 
 </html>

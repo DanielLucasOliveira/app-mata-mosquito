@@ -15,6 +15,9 @@
     <div class="container">
         <div class="row">
             <div class="col">
+                <div class="pontuacao_final">
+                    <h2> Pontuação final: <span id="final"></span></h2>
+                </div>
                 <div class="d-flex justify-content-center">
                     <img src="/img/game_over.png" alt="">
                 </div>
@@ -25,17 +28,36 @@
             <div class="col">
                 <div class="d-flex justify-content-center">
                     <div class="d-flex flex-column col-3">
-                        <button type="button" class="btn btn-dark btn-lg m-2"
-                            onclick="reiniciar()">Reiniciar</button>
-                        <button type="button" class="btn btn-dark btn-lg m-2"
-                            onclick="inicioJogo()">Inicio</button>
+                        <button type="button" class="btn btn-dark btn-lg m-2" onclick="reiniciar()">Reiniciar</button>
+                        <button type="button" class="btn btn-dark btn-lg m-2" onclick="inicioJogo()">Inicio</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/jogo.js"> </script>
+    <script>
+        var nivel;
+        var tempoJogo;
+        function getParams() {
+            var queryString = window.location.search;
+            var params = new URLSearchParams(queryString);
+            pontuacao_final = params.get('pontuacao_final');
+            inicio = params.get('nivel');
+            tempoJogo = params.get('tempoJogo');
+            document.getElementById('final').innerHTML = pontuacao_final
+            nivel = inicio;
+        }
+        getParams();
+        function reiniciar() {
+            localStorage.setItem('pontuacao_final', 0);
+            window.location.href = '/pages/app.html?nivel=' + nivel + '&tempoJogo=' + tempoJogo;
+        }
+
+        function inicioJogo() {
+            window.location.href = '/pages/index.html'
+        }
+    </script>
 </body>
 
 </html>

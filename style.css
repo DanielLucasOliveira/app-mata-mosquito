@@ -45,6 +45,10 @@ body{
     font-weight: bold;
 }
 
+.container img {
+    width: 40%;
+}
+
 
 .mosquito_um {
     width: 80px;
